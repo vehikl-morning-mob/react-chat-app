@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function login(email, password) {
     try {
-        await axios.post('localhost:8000/login', {email, password});
+        await axios.post('http://127.0.0.1:8000/api/auth/login', {email, password});
     } catch (e) {
         //
     }
