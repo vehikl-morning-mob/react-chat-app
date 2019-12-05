@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {fireEvent, render} from '@testing-library/react';
 
 import {Login} from './Login';
 import {login} from '../services/login';
@@ -16,12 +16,8 @@ describe('Login', () => {
             password: 'taco'
         };
 
-        const byContainerPassword = container.querySelector('input[type="password"]');
-        const byContainerEmail = container.querySelector('input[type="email"]');
-        const byTestIdPassword = getByTestId('password-field');
-        const byTestIdEmail = getByTestId('email-field');
-        fireEvent.change(byTestIdPassword, {target: {value: userCredentials.password}});
-        fireEvent.change(byTestIdEmail, {target: {value: userCredentials.email}});
+        fireEvent.input(container.querySelector('input[type="password"]'), {target: {value: userCredentials.password}});
+        fireEvent.input(container.querySelector('input[type="email"]'), {target: {value: userCredentials.email}});
         fireEvent.click(container.querySelector('button[type="submit"]'));
 
         expect(login).toHaveBeenCalledWith(userCredentials.email, userCredentials.password);

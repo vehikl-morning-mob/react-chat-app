@@ -2,22 +2,28 @@ import React, {useState} from 'react';
 import {login} from '../services/login';
 
 export function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [inputs, setInputs] = useState({email: '', password: ''});
 
     async function handleSubmit(event) {
         event.preventDefault();
-        await login(email, password);
+        await login(inputs.email, inputs.password);
+    }
+
+    function handleChange(event) {
+        event.persist();
+        setInputs({...inputs, [event.target.name]: event.target.value});
     }
 
     return <form>
         <input type="email"
-               value={email}
-               onChange={event => setEmail(event.target.value)}/>
+               name="email"
+               value={inputs.email}
+               onChange={handleChange}/>
 
         <input type="password"
-               value={password}
-               onChange={event => setPassword(event.target.value)}/>
+               name="password"
+               value={inputs.password}
+               onChange={handleChange}/>
 
         <button type="submit"
                 onClick={handleSubmit}>
