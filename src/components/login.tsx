@@ -1,17 +1,20 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState, MouseEvent} from 'react';
 import {login} from '../services/login';
 
 export function Login() {
     const [inputs, setInputs] = useState({email: '', password: ''});
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
         await login(inputs.email, inputs.password);
     }
 
-    function handleChange(event) {
+    function handleChange(event: ChangeEvent) {
         event.persist();
-        setInputs({...inputs, [event.target.name]: event.target.value});
+        const target = event.target as HTMLInputElement;
+        setInputs({
+            ...inputs, [target.name]: target.value
+        });
     }
 
     return <form>

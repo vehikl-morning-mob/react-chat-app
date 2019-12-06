@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
 
-import {Login} from './Login';
+import {Login} from './login';
 import {login} from '../services/login';
 
 jest.mock('../services/login', () => ({
@@ -16,9 +16,9 @@ describe('Login', () => {
             password: 'taco'
         };
 
-        fireEvent.input(container.querySelector('input[type="password"]'), {target: {value: userCredentials.password}});
-        fireEvent.input(container.querySelector('input[type="email"]'), {target: {value: userCredentials.email}});
-        fireEvent.click(container.querySelector('button[type="submit"]'));
+        fireEvent.input(container.querySelector('input[type="password"]') as HTMLElement, {target: {value: userCredentials.password}});
+        fireEvent.input(container.querySelector('input[type="email"]') as HTMLElement, {target: {value: userCredentials.email}});
+        fireEvent.click(container.querySelector('button[type="submit"]') as HTMLElement);
 
         expect(login).toHaveBeenCalledWith(userCredentials.email, userCredentials.password);
     });
