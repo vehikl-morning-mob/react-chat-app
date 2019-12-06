@@ -13,7 +13,7 @@ export async function postMessage(message: string) {
     try {
         await axios.post('http://127.0.0.1:8000/api/messages', {message}, {
             headers: {
-                'Authorization': `bearer ${window.localStorage.getItem('token')}`
+                Authorization: `bearer ${window.localStorage.getItem('token')}`
             }
         })
     } catch (e) {
