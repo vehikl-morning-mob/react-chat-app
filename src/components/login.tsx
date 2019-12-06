@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState, MouseEvent} from 'react';
-import {login} from '../services/login';
+import {login} from '../services';
 
 export function Login() {
     const [inputs, setInputs] = useState({email: '', password: ''});

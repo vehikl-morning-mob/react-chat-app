@@ -2,15 +2,15 @@ import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
 
 import {Login} from './login';
-import {login} from '../services/login';
+import {login} from '../services';
 
-jest.mock('../services/login', () => ({
+jest.mock('../services', () => ({
     login: jest.fn()
 }));
 
 describe('Login', () => {
     it('Allows a user to login', async () => {
-        const {container, getByTestId} = render(<Login/>);
+        const {container} = render(<Login/>);
         const userCredentials = {
             email: 'mrv__@users.men',
             password: 'taco'

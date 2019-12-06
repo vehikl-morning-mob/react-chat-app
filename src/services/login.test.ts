@@ -1,4 +1,4 @@
-import {login} from './login';
+import {login} from './index';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
