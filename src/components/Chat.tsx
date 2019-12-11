@@ -9,7 +9,8 @@ export function Chat() {
         await postMessage(message);
     };
 
-    return <div>
+    return <div className="chat-component">
+        Chat
         <input type="text" value={message} onChange={event => setMessage(event.target.value)}/>
         <button type="submit" onClick={handlePostMessage}/>
     </div>;

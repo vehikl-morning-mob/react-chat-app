@@ -17,7 +17,8 @@ export function Login() {
         });
     }
 
-    return <form>
+    return <form className="login-component">
+        Login
         <input type="email"
                name="email"
                value={inputs.email}
