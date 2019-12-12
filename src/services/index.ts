@@ -24,5 +24,16 @@ export async function postMessage(message: string) {
 }
 
 export async function getMessages(): Promise<Message[]> {
-    return [{user: 'foobs', message: 'buzz'}];
+    try {
+        const response = await axios.get<Message[]>('http://127.0.0.1:8000/api/messages', {
+            headers: {
+                Authorization: `bearer ${window.localStorage.getItem('token')}`
+            }
+        });
+
+        return response.data;
+    } catch (e) {
+        alert('Failed to GET messages');
+    }
+    return [];
 }
