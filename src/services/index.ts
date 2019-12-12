@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Message} from "../types/backend";
 
 export async function login(email: string, password: string) {
     try {
@@ -20,4 +21,8 @@ export async function postMessage(message: string) {
     } catch (e) {
         alert('Failed to submit new message');
     }
+}
+
+export async function getMessages(): Promise<Message[]> {
+    return [{user: 'foobs', message: 'buzz'}];
 }
