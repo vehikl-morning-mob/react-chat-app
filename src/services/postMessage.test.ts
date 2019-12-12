@@ -17,7 +17,7 @@ describe('PostMessage', () => {
 
         await postMessage(message);
 
-        expect(JSON.parse(mockAdapter.history.post[0].data)).toEqual({message});
+        expect(JSON.parse(mockAdapter.history.post[0].data)).toEqual({content: message});
     });
 
     it('Uses the bearer token from local storage in the requests', async () => {

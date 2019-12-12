@@ -13,7 +13,7 @@ export async function login(email: string, password: string) {
 
 export async function postMessage(message: string) {
     try {
-        await axios.post('http://127.0.0.1:8000/api/messages', {message}, {
+        await axios.post('http://127.0.0.1:8000/api/messages', {content: message}, {
             headers: {
                 Authorization: `bearer ${window.localStorage.getItem('token')}`
             }
