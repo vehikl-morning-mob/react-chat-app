@@ -33,8 +33,12 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.17",
+    "@types/pusher-js": "^4.2.2",
     "axios-mock-adapter": "^1.17.0",
     "flush-promises": "^1.0.2",
+    "laravel-echo": "^1.6.1",
+    "mock-echo": "^1.1.1",
+    "pusher-js": "^5.0.3",
     "typescript": "^3.7.3"
   }
 }
