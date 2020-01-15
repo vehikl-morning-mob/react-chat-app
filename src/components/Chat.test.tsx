@@ -20,4 +20,16 @@ describe('chat', () => {
         fireEvent.click(container.querySelector("button[type='submit']") as HTMLButtonElement);
         expect(postMessage).toHaveBeenCalledWith(message);
     });
-})
+
+    it('clears input after successful post message', async () => {
+        let container;
+        const message: string = 'Hello Karen';
+        await act(async () => {
+            container = await render(<Chat/>).container;
+            fireEvent.input(container.querySelector("input[type='text']") as HTMLInputElement, {target: {value: message}});
+            fireEvent.click(container.querySelector("button[type='submit']") as HTMLButtonElement);
+        });
+
+        expect(container.querySelector("input[type='text']").value).toBe('');
+    });
+});

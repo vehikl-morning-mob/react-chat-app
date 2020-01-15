@@ -8,6 +8,7 @@ export function Chat() {
     const handlePostMessage = async (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         await postMessage(message);
+        setMessage('');
     };
 
     return <div className="chat-component">
