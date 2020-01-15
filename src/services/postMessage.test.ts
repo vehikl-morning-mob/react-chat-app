@@ -1,12 +1,12 @@
 import {postMessage} from './index';
 import MockAdapter from 'axios-mock-adapter';
-import axios from 'axios';
+import axios from './axios';
 
 describe('PostMessage', () => {
     let mockAdapter: MockAdapter;
     beforeEach(() => {
         mockAdapter = new MockAdapter(axios);
-        mockAdapter.onPost('http://127.0.0.1:8000/api/messages').reply(201);
+        mockAdapter.onPost('api/messages').reply(201);
     });
     afterEach(() => {
         mockAdapter.restore();

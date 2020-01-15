@@ -1,6 +1,6 @@
 import {login} from './index';
 import MockAdapter from 'axios-mock-adapter';
-import axios from 'axios';
+import axios from './axios';
 
 const accessToken = '1231231231231241';
 
@@ -8,7 +8,7 @@ describe('login service', () => {
     let mockAdapter: MockAdapter;
     beforeEach(() => {
         mockAdapter = new MockAdapter(axios);
-        mockAdapter.onPost('http://127.0.0.1:8000/api/auth/login').reply(200, {
+        mockAdapter.onPost('api/auth/login').reply(200, {
             'access_token': accessToken,
             'token_type': 'bearer',
             'expires_in': 3600

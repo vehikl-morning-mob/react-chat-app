@@ -1,6 +1,6 @@
 import {getMessages} from "./index";
 import MockAdapter from "axios-mock-adapter";
-import axios from 'axios';
+import axios from './axios';
 import {Message} from "../types/backend";
 
 describe('Get Messages', () => {
@@ -10,7 +10,7 @@ describe('Get Messages', () => {
 
     beforeEach(() => {
         mockAdapter = new MockAdapter(axios);
-        mockAdapter.onGet('http://127.0.0.1:8000/api/messages').reply(200, [message1, message2])
+        mockAdapter.onGet('api/messages').reply(200, [message1, message2])
     });
 
     afterEach(() => {
