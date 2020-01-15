@@ -15,7 +15,7 @@ const ChatHistory = () => {
     useEffect(() => {
         loadExistingMessages();
         window.Echo.channel('room').listen('.App\\Events\\NewMessageReceived', (newMessage: Message) => {
-            setMessages((messages) => [newMessage, ...messages]);
+            setMessages((messages) => [...messages, newMessage]);
         });
     }, []);
 

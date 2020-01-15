@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, wait} from "@testing-library/react";
+import {render, wait, getByText} from "@testing-library/react";
 import {ChatHistory} from "./ChatHistory";
 import {act} from "react-dom/test-utils";
 import flushPromises from "flush-promises";
@@ -61,7 +61,7 @@ describe("ChatHistory", () => {
 
     });
 
-    xit("Shows most recent message on the bottom", async () => {
+    it("Shows most recent message on the bottom", async () => {
         let container;
         const messages = [
             {user: 'user1', message: 'message1'},
@@ -75,8 +75,8 @@ describe("ChatHistory", () => {
             mockEcho.channel('room').broadcast('.App\\Events\\NewMessageReceived', messages[1]);
         });
 
-        const lastMessageCard: HTMLElement = Array.from(container.querySelectorAll(".message-card")).pop() as HTMLElement;
 
-        expect(lastMessageCard.nodeValue).toEqual('Foobar');
+        const lastMessageCard = Array.from(container.querySelectorAll(".message-card")).pop() as HTMLElement;
+        expect(getByText(lastMessageCard, 'user1: message2')).toBeTruthy();
     });
 });
